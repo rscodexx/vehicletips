@@ -32,7 +32,7 @@
 
 ## 💻 Sobre o projeto
 
-Vehicle Tips - Um sistema onde usuários pode cadastrar dicas de veículos, desenvolvido para o processo seletivo na empresa Supera.
+Vehicle Tips - Um sistema onde usuários podem cadastrar dicas de veículos, desenvolvido para o processo seletivo na empresa Supera.
 
 ## 🦸 Autor
 
