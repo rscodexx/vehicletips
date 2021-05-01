@@ -21,6 +21,8 @@ class LoginController extends Controller
             'password' => $request->password
         ];
 
+        $remember = $request->input('remember', false);
+
         $validator = Validator::make($credentials, [
             'email' => 'required',
             'password' => 'required|min:8'
@@ -32,7 +34,7 @@ class LoginController extends Controller
                 ->withInput();
         }
 
-        if (Auth::attempt($credentials)) {
+        if (Auth::attempt($credentials, $remember)) {
             //return redirect()->intended('/');
         }
 

@@ -27,7 +27,7 @@
 
                         <div class="form-group col-md-12">
                             <label for="email">E-mail</label>
-                            <input type="email" name="email" class="form-control" id="email" required>
+                            <input type="email" name="email" class="form-control" id="email" value="{{old('email')}}" required>
                         </div>
                         <div class="form-group col-md-12 mt-3 mt-md-0">
                             <label for="password">Senha</label>
@@ -36,7 +36,7 @@
                         <p class="mt-1">Não possui conta? <a href="{{route('user.auth.register')}}">Registre-se</a></p>
 
                         <div class="form-check">
-                            <input class="form-check-input" name="remember" type="checkbox" value="" id="flexCheckIndeterminate">
+                            <input class="form-check-input" name="remember" type="checkbox" id="flexCheckIndeterminate">
                             <label class="form-check-label" for="flexCheckIndeterminate">
                                 <span class="ms-1">Lembrar-me</span>
                             </label>
