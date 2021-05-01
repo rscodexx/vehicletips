@@ -49,7 +49,6 @@
                 <li><a class="nav-link scrollto active" href="#hero">Início</a></li>
                 <li><a class="nav-link scrollto" href="#about">Sobre</a></li>
                 <li><a class="nav-link scrollto" href="#tips">Dicas</a></li>
-                <li><a class="nav-link scrollto" href="#contact">Contacto</a></li>
                 @if(Auth::user())
                     <li><a class="getstarted scrollto" href="{{route('user.auth.logout')}}">SAIR</a></li>
                 @else
@@ -201,75 +200,33 @@
 
         </div>
     </section><!-- End Testimonials Section -->
-    <!-- ======= Contact Section ======= -->
-    <section id="contact" class="contact">
-        <div class="container">
-
-            <div class="section-title">
-                <h2>Contato</h2>
-                <p>Precisa falar com a gente? mande uma mensagem, vamos responder assim que possível.</p>
-            </div>
-
-            <div class="row">
-
-                <div class="col-lg-5 d-flex align-items-stretch">
-                    <div class="info">
-                        <div class="address">
-                            <i class="bi bi-geo-alt"></i>
-                            <h4>Localização:</h4>
-                            <p>Brasília, DF</p>
-                        </div>
-
-                        <div class="email">
-                            <i class="bi bi-envelope"></i>
-                            <h4>Email:</h4>
-                            <p><a href="mailto:rafaelsantos@rscode.com.br">rafaelsantos@rscode.com.br</a></p>
-                        </div>
-
-                        <div class="phone">
-                            <i class="bi bi-phone"></i>
-                            <h4>Telefone:</h4>
-                            <p>+55 61 982949155</p>
-                        </div>
-
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d491463.62228020653!2d-48.077273518485114!3d-15.774422806004937!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x935a3d18e45b91a3%3A0x24e8d3620bd85d7f!2sBras%C3%ADlia%20-%20DF!5e0!3m2!1spt-BR!2sbr!4v1619806664409!5m2!1spt-BR!2sbr" frameborder="0" style="border:0; width: 100%; height: 290px;" allowfullscreen></iframe>
-                    </div>
-
-                </div>
-
-                <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
-                    <form action="#" method="post" role="form" class="php-email-form">
-                        <div class="row">
-                            <div class="form-group col-md-6">
-                                <label for="name">Nome</label>
-                                <input type="text" name="name" class="form-control" id="name" required>
-                            </div>
-                            <div class="form-group col-md-6 mt-3 mt-md-0">
-                                <label for="name">Email</label>
-                                <input type="email" class="form-control" name="email" id="email" required>
-                            </div>
-                        </div>
-                        <div class="form-group mt-3">
-                            <label for="name">Assunto</label>
-                            <input type="text" class="form-control" name="subject" id="subject" required>
-                        </div>
-                        <div class="form-group mt-3">
-                            <label for="name">Mensagem</label>
-                            <textarea class="form-control" name="message" rows="10" required></textarea>
-                        </div>
-                        <div class="text-center"><button type="submit">Enviar Mensagem</button></div>
-                    </form>
-                </div>
-
-            </div>
-
-        </div>
-    </section><!-- End Contact Section -->
 
 </main><!-- End #main -->
 
 <!-- ======= Footer ======= -->
 <footer id="footer">
+
+    <div class="footer-top">
+
+        <div class="container">
+
+            <div class="row  justify-content-center">
+                <div class="col-lg-6">
+                    <h3>Vehicle Tips</h3>
+                    <p>Siga e acompanhe a gente pelas redes sociais, seja o primeiro a saber de todas as novidades.</p>
+                </div>
+            </div>
+
+            <div class="social-links">
+                <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+                <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+                <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+                <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+                <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+            </div>
+
+        </div>
+    </div>
 
     <div class="container footer-bottom clearfix">
         <div class="copyright">

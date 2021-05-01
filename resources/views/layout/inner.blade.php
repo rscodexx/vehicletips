@@ -9,7 +9,7 @@
             <div class="d-flex justify-content-between align-items-center">
                 <h2>@yield('title')</h2>
                 <ol>
-                    <li><a href="index.html">Início</a></li>
+                    <li><a href="{{route('home')}}">Início</a></li>
                     <li>@yield('inner')</li>
                 </ol>
             </div>

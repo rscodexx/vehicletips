@@ -47,10 +47,9 @@
 
         <nav id="navbar" class="navbar">
             <ul>
-                <li><a class="nav-link scrollto active" href="#hero">Início</a></li>
-                <li><a class="nav-link scrollto" href="#about">Sobre</a></li>
-                <li><a class="nav-link scrollto" href="#tips">Dicas</a></li>
-                <li><a class="nav-link scrollto" href="#contact">Contacto</a></li>
+                <li><a class="nav-link scrollto active" href="{{route('home')}}#hero">Início</a></li>
+                <li><a class="nav-link scrollto" href="{{route('home')}}#about">Sobre</a></li>
+                <li><a class="nav-link scrollto" href="{{route('home')}}#tips">Dicas</a></li>
                 @if(Auth::user())
                     <li><a class="getstarted scrollto" href="{{route('user.auth.logout')}}">SAIR</a></li>
                 @else
