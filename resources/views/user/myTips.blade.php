@@ -50,8 +50,8 @@
                         <td>{{$tip->vehicle}}</td>
                         <td>{{$tip->version}}</td>
                         <td>
-                            <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#tips{{$tip->id}}"><i class="fas fa-eye"></i></button>
-                            <button class="btn btn-danger"><i class="fas fa-trash"></i></button>
+                            <button class="btn btn-success mb-1" data-bs-toggle="modal" data-bs-target="#tips{{$tip->id}}"><i class="fas fa-eye"></i></button>
+                            <button class="btn btn-danger mb-1"><i class="fas fa-trash"></i></button>
                         </td>
                     </tr>
 
