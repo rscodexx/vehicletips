@@ -26,7 +26,9 @@
                 </div>
             @endif
 
-            <table class="table table-responsive">
+            <div class="table-responsive">
+
+            <table class="table">
                 <thead class="table-dark">
                 <tr>
                     <th scope="col">Título</th>
@@ -74,6 +76,8 @@
                 @endforeach
                 </tbody>
             </table>
+
+            </div>
 
         </div>
 
