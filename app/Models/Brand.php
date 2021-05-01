@@ -13,6 +13,6 @@ class Brand extends Model
 
     public function vehicle()
     {
-        return $this->hasOne(Brand::class);
+        return $this->hasOne(Brand::class, 'vehicle_id', 'id');
     }
 }
