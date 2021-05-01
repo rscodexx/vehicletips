@@ -35,12 +35,20 @@ class LoginController extends Controller
         }
 
         if (Auth::attempt($credentials, $remember)) {
-            //return redirect()->intended('/');
+            return redirect()->intended('/');
         }
 
         return back()->withErrors([
             'email' => 'Usuário e/ou senha inválidas',
         ]);
 
+    }
+
+    public function logout(Request $request){
+
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('/');
     }
 }

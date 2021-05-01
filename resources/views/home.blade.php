@@ -40,7 +40,7 @@
 <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center justify-content-between">
 
-        <h1 class="logo"><a href="">VEHICLE TIPS</a></h1>
+        <h1 class="logo"><a href="#">VEHICLE TIPS</a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
@@ -50,7 +50,11 @@
                 <li><a class="nav-link scrollto" href="#about">Sobre</a></li>
                 <li><a class="nav-link scrollto" href="#tips">Dicas</a></li>
                 <li><a class="nav-link scrollto" href="#contact">Contacto</a></li>
-                <li><a class="getstarted scrollto" href="#about">ACESSAR</a></li>
+                @if(Auth::user())
+                    <li><a class="getstarted scrollto" href="{{route('user.auth.logout')}}">SAIR</a></li>
+                @else
+                <li><a class="getstarted scrollto" href="{{route('user.auth.login')}}">ACESSAR</a></li>
+                @endif
             </ul>
             <i class="bi bi-list mobile-nav-toggle"></i>
         </nav><!-- .navbar -->
@@ -65,11 +69,19 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 pt-5 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center">
+                    @if(Auth::user())
+                        <h1>Seja bem vindo, {{Auth::user()->name}}</h1>
+                        <h2>Veja todas as dicas que temos para veículos.</h2>
+                        <div class="d-flex">
+                            <a href="{{route('user.auth.register')}}" class="btn-get-started scrollto">Ver dicas</a>
+                        </div>
+                    @else
                     <h1>Dicas para veículos</h1>
                     <h2>Aqui você consegue dicas preciosas antes de comprar um veículo.</h2>
                     <div class="d-flex">
-                        <a href="#about" class="btn-get-started scrollto">Registre-se</a>
+                        <a href="{{route('user.auth.register')}}" class="btn-get-started scrollto">Registre-se</a>
                     </div>
+                    @endif
                 </div>
                 <div class="col-lg-6 order-1 order-lg-2 hero-img">
                     <img src="{{asset('assets/img/hero-img.svg')}}" class="img-fluid animated" alt="">
@@ -109,7 +121,7 @@
                         <li><i class="bi bi-check-circle"></i> Site sem fins lucrativos</li>
                     </ul>
                     <p>
-                        Então o que está esperando? Faça o seu <a href="">cadastro</a> e contribua com a nossa comunidade.
+                        Então o que está esperando? @if(Auth::user()) Adicione uma <a href="">dica</a> @else Faça o seu <a href="{{route('user.auth.register')}}">cadastro</a> @endif e contribua com a nossa comunidade.
                     </p>
                 </div>
             </div>
@@ -124,22 +136,22 @@
             <div class="row counters">
 
                 <div class="col-lg-3 col-6 text-center">
-                    <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1" class="purecounter"></span>
+                    <span data-purecounter-start="0" data-purecounter-end="{{$usersCount}}" data-purecounter-duration="1" class="purecounter"></span>
                     <p>Membros</p>
                 </div>
 
                 <div class="col-lg-3 col-6 text-center">
-                    <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1" class="purecounter"></span>
+                    <span data-purecounter-start="0" data-purecounter-end="{{$motocycleCount}}" data-purecounter-duration="1" class="purecounter"></span>
                     <p>Dicas de Motos</p>
                 </div>
 
                 <div class="col-lg-3 col-6 text-center">
-                    <span data-purecounter-start="0" data-purecounter-end="1463" data-purecounter-duration="1" class="purecounter"></span>
+                    <span data-purecounter-start="0" data-purecounter-end="{{$carCount}}" data-purecounter-duration="1" class="purecounter"></span>
                     <p>Dicas de Carros</p>
                 </div>
 
                 <div class="col-lg-3 col-6 text-center">
-                    <span data-purecounter-start="0" data-purecounter-end="321" data-purecounter-duration="1" class="purecounter"></span>
+                    <span data-purecounter-start="0" data-purecounter-end="{{$truckCount}}" data-purecounter-duration="1" class="purecounter"></span>
                     <p>Dicas de Caminhões</p>
                 </div>
 
@@ -154,75 +166,32 @@
 
             <div class="section-title">
                 <h2>ÚLTIMAS DICAS</h2>
-                <p>Para ver todas as dicas, é necessário <a href="">acessar</a> nosso site.</p>
+                @if(Auth::user())
+                    <p>Para ver todas as dicas, <a href="">clique aqui</a></p>
+                @else
+                    <p>Para ver todas as dicas, é necessário <a href="{{route('user.auth.login')}}">acessar</a> nosso site.</p>
+                @endif
             </div>
 
             <div class="testimonials-slider swiper-container" data-aos="fade-up" data-aos-delay="100">
                 <div class="swiper-wrapper">
 
-                    <div class="swiper-slide">
-                        <div class="testimonial-item">
-                            <p>
-                                <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                                Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
-                                <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                            </p>
-                            <h3>Onix</h3>
-                            <h4>Chevrolet</h4>
-                        </div>
-                    </div><!-- End testimonial item -->
+                    @foreach($tipsList as $tip)
+                        <div class="swiper-slide">
 
-                    <div class="swiper-slide">
-                        <div class="testimonial-item">
-                            <p>
-                                <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                                Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
-                                <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                            </p>
-                            <img src="{{asset('assets/img/testimonials/testimonials-2.jpg')}}" class="testimonial-img" alt="">
-                            <h3>Sara Wilsson</h3>
-                            <h4>Designer</h4>
-                        </div>
-                    </div><!-- End testimonial item -->
+                            <div class="testimonial-item">
+                                <p>
+                                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                                    {{$tip->body}}
+                                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                                </p>
+                                <h3>{{$tip->vehicle}}</h3>
+                                <h4>{{$tip->users->name}}</h4>
+                                <h4>em {{date('d:m:Y', strtotime($tip->updated_at))}} às {{date('H:m:i', strtotime($tip->updated_at))}}</h4>
+                            </div>
 
-                    <div class="swiper-slide">
-                        <div class="testimonial-item">
-                            <p>
-                                <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                                Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.
-                                <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                            </p>
-                            <img src="{{asset('assets/img/testimonials/testimonials-3.jpg')}}" class="testimonial-img" alt="">
-                            <h3>Jena Karlis</h3>
-                            <h4>Store Owner</h4>
-                        </div>
-                    </div><!-- End testimonial item -->
-
-                    <div class="swiper-slide">
-                        <div class="testimonial-item">
-                            <p>
-                                <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                                Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.
-                                <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                            </p>
-                            <img src="{{asset('assets/img/testimonials/testimonials-4.jpg')}}" class="testimonial-img" alt="">
-                            <h3>Matt Brandon</h3>
-                            <h4>Freelancer</h4>
-                        </div>
-                    </div><!-- End testimonial item -->
-
-                    <div class="swiper-slide">
-                        <div class="testimonial-item">
-                            <p>
-                                <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                                Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.
-                                <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                            </p>
-                            <img src="{{asset('assets/img/testimonials/testimonials-5.jpg')}}" class="testimonial-img" alt="">
-                            <h3>John Larson</h3>
-                            <h4>Entrepreneur</h4>
-                        </div>
-                    </div><!-- End testimonial item -->
+                        </div><!-- End testimonial item -->
+                    @endforeach
 
                 </div>
                 <div class="swiper-pagination"></div>
@@ -302,14 +271,14 @@
 
     <div class="container footer-bottom clearfix">
         <div class="copyright">
-            &copy; Copyright <strong><span>Rafael Santos</span></strong>. Todos os direitos reservados.
+            2021 &copy; Copyright <strong><span>Vehicle Tips</span></strong>. Todos os direitos reservados
         </div>
         <div class="credits">
             <!-- All the links in the footer should remain intact. -->
             <!-- You can delete the links only if you purchased the pro version. -->
             <!-- Licensing information: https://bootstrapmade.com/license/ -->
             <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/enno-free-simple-bootstrap-template/ -->
-            Design por <a href="https://bootstrapmade.com/">BootstrapMade</a>
+            Sistema feito por <a href="https://rscode.com.br/">RS CODE</a> e design por <a href="https://bootstrapmade.com/">BootstrapMade</a>
         </div>
     </div>
 </footer><!-- End Footer -->

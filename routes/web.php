@@ -22,6 +22,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 // Auth
 Route::get('/login', [LoginController::class, 'login'])->name('user.auth.login');
 Route::post('/loginDo', [LoginController::class, 'loginDo'])->name('user.auth.loginDo');
+Route::get('/logout', [LoginController::class, 'logout'])->name('user.auth.logout');
 Route::get('/register', [RegisterController::class, 'register'])->name('user.auth.register');
 Route::post('/registerDo', [RegisterController::class, 'registerDo'])->name('user.auth.registerDo');
 
