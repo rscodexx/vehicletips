@@ -1416,6 +1416,10 @@ section {
     border: none;
 }
 
+.table{
+    text-align: center;
+}
+
 @media (max-width: 992px) {
   #footer .copyright, #footer .credits {
     float: none;
