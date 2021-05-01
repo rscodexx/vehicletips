@@ -26,7 +26,7 @@
                 </div>
             @endif
 
-            <table class="table">
+            <table class="table table-responsive">
                 <thead class="table-dark">
                 <tr>
                     <th scope="col">Título</th>
@@ -47,7 +47,10 @@
                         <td>{{$tip->brand}}</td>
                         <td>{{$tip->vehicle}}</td>
                         <td>{{$tip->version}}</td>
-                        <td><button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#tips{{$tip->id}}"><i class="fas fa-eye"></i></button></td>
+                        <td>
+                            <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#tips{{$tip->id}}"><i class="fas fa-eye"></i></button>
+                            <button class="btn btn-danger"><i class="fas fa-trash"></i></button>
+                        </td>
                     </tr>
 
                     <!-- Modal Itens -->
