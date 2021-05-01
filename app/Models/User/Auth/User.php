@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\User;
+namespace App\Models\User\Auth;
 
 use App\Models\Tip;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
