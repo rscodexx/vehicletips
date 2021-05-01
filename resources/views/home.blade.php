@@ -73,7 +73,9 @@
                         <h1>Seja bem vindo, {{Auth::user()->name}}</h1>
                         <h2>Veja todas as dicas que temos para veículos.</h2>
                         <div class="d-flex">
-                            <a href="{{route('user.auth.register')}}" class="btn-get-started scrollto">Ver dicas</a>
+                            <a href="{{route('user.tips')}}" class="btn-get-started scrollto me-2"> Todas as dicas</a>
+                            <a href="{{route('user.tips.my')}}" class="btn-get-started scrollto me-2"> Minhas Dicas</a>
+                            <a href="#" class="btn-get-started scrollto me-2"> Cadastrar Dica</a>
                         </div>
                     @else
                     <h1>Dicas para veículos</h1>

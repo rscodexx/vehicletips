@@ -1,45 +1,13 @@
 @extends('layout.menu')
 
-@section('title', 'Todas as Dicas')
-@section('inner', 'Dicas')
+@section('title', 'Minhas Dicas')
+@section('inner', 'Minhas Dicas')
 
 @extends('layout.inner')
 
 @section('content')
 
-
-
     <div class="row">
-
-        <div class="tips">
-
-                <div class="tips d-flex align-items-center">
-                    <div class="col-sm-6 col-lg-8">
-                        <form action="{{route('user.tips.search')}}" method="post">
-                            @csrf
-                            <div class="row">
-                                <div class="form-group col-md-4">
-                                    <select name="filter" class="form-select">
-                                        <option value="marca">Marca</option>
-                                        <option value="modelo">Veículo</option>
-                                        <option value="versao">Versão</option>
-                                    </select>
-                                </div>
-                                <div class="form-group col-md-4 mt-3 mt-md-0">
-                                    <input type="text" class="form-control" name="search" id="search" placeholder="Buscar...">
-                                </div>
-                                <div class="form-group col-md-2 mt-3 mt-md-0">
-                                    <button type="submit">Pesquisar</button>
-                                </div>
-                                <div class="form-group col-md-2 mt-3 mt-md-0">
-                                    <button type="submit" formaction="{{route('user.tips')}}">Limpar</button>
-                                </div>
-                                </div>
-                            </div>
-                        </form>
-                </div>
-
-        </div>
 
         <div class="col-md-12">
 
