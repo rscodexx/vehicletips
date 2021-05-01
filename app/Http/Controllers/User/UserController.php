@@ -4,8 +4,12 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\Tip;
+use App\Models\Vehicle;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Brand;
+use App\Models\Version;
+use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
@@ -62,8 +66,78 @@ class UserController extends Controller
         ]);
     }
 
-    public function create()
+    public function tipsCreate(Request $request)
     {
-        return view('user.tips.create');
+        $vehicles = Vehicle::all();
+
+        $brands = Brand::all();
+
+        $versions = Version::all();
+
+        return view('user.tipsCreate',[
+            'vehicles' => $vehicles,
+            'brands' => $brands,
+            'verions' => $versions
+        ]);
+    }
+
+    public function tipsCreateDo(Request $request)
+    {
+
+        //dd($request->all());
+
+        $validator = Validator::make($request->only('title', 'body'), [
+            'title' => 'required|min:4|unique:tips',
+            'body' => 'required|min:10'
+        ]);
+
+        if ($validator->fails()) {
+            return redirect('tips/create')
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        if($request->input('type') != "car" && $request->input('type') != "truck" && $request->input('type') != "motocycle"){
+            return back()->withErrors([
+                'type' => 'Tipo inválido'
+            ]);
+        }
+
+        $vehicles = Vehicle::select('name')->where('name', $request->only('vehicle'))->first();
+
+        if(is_null($vehicles)){
+            return back()->withErrors([
+                'vehicle' => 'Veículo inválido'
+            ]);
+        }
+
+        $brands = Brand::select('name')->where('name', $request->only('brand'))->first();
+
+        if(is_null($brands)){
+            return back()->withErrors([
+                'brand' => 'Marca inválida'
+            ]);
+        }
+
+        $versions = Version::select('name')->where('name', $request->only('version'))->first();
+
+        if(is_null($versions)){
+            return back()->withErrors([
+                'brand' => 'Versão inválida'
+            ]);
+        }
+
+        $tips = new Tip;
+        $tips->title = $request->title;
+        $tips->type = $request->type;
+        $tips->vehicle = $request->vehicle;
+        $tips->brand = $request->brand;
+        $tips->version = $request->version;
+        $tips->body = $request->body;
+        $tips->user_id = Auth::id();
+        $tips->save();
+
+        return redirect()->route('user.tips.my')->with('custom_alert','Dica cadastrada com sucesso.');
+
     }
 }

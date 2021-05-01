@@ -33,5 +33,6 @@ Route::group(['middleware' => ['auth']], function() {
     Route::match(['post', 'get'],'/tips', [UserController::class, 'tips'])->name('user.tips');
     Route::post('/tips/search', [UserController::class, 'tipsSearch'])->name('user.tips.search');
     Route::get('/tips/my', [UserController::class, 'myTips'])->name('user.tips.my');
-    Route::get('/tips/create', [UserController::class, 'create'])->name('user.tips.create');
+    Route::get('/tips/create', [UserController::class, 'tipsCreate'])->name('user.tips.create');
+    Route::post('/tips/createDo', [UserController::class, 'tipsCreateDo'])->name('user.tips.tipsCreateDo');
 });

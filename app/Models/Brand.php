@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Vehicle;
 
 class Brand extends Model
 {
@@ -11,7 +12,7 @@ class Brand extends Model
 
     public $timestamps = false;
 
-    public function vehicle()
+    public function vehicles()
     {
         return $this->hasOne(Brand::class, 'vehicle_id', 'id');
     }

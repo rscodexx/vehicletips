@@ -11,6 +11,21 @@
 
         <div class="col-md-12">
 
+            @if(Session::has('custom_alert'))
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="alert alert-success">
+                                <span>
+                                {{ Session::get('custom_alert') }}
+                                    @php
+                                        Session::forget('custom_alert');
+                                    @endphp
+                                </span>
+                        </div>
+                    </div>
+                </div>
+            @endif
+
             <table class="table">
                 <thead class="table-dark">
                 <tr>

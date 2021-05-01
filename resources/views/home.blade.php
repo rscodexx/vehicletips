@@ -75,7 +75,7 @@
                         <div class="d-flex">
                             <a href="{{route('user.tips')}}" class="btn-get-started scrollto me-2"> Todas as dicas</a>
                             <a href="{{route('user.tips.my')}}" class="btn-get-started scrollto me-2"> Minhas Dicas</a>
-                            <a href="#" class="btn-get-started scrollto me-2"> Cadastrar Dica</a>
+                            <a href="{{route('user.tips.create')}}" class="btn-get-started scrollto me-2"> Cadastrar Dica</a>
                         </div>
                     @else
                     <h1>Dicas para veículos</h1>
