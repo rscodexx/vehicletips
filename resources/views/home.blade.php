@@ -122,7 +122,7 @@
                         <li><i class="bi bi-check-circle"></i> Site sem fins lucrativos</li>
                     </ul>
                     <p>
-                        Então o que está esperando? @if(Auth::user()) Adicione uma <a href="">dica</a> @else Faça o seu <a href="{{route('user.auth.register')}}">cadastro</a> @endif e contribua com a nossa comunidade.
+                        Então o que está esperando? @if(Auth::user()) Adicione uma <a href="{{route('user.tips.create')}}">dica</a> @else Faça o seu <a href="{{route('user.auth.register')}}">cadastro</a> @endif e contribua com a nossa comunidade.
                     </p>
                 </div>
             </div>
@@ -168,7 +168,7 @@
             <div class="section-title">
                 <h2>ÚLTIMAS DICAS</h2>
                 @if(Auth::user())
-                    <p>Para ver todas as dicas, <a href="">clique aqui</a></p>
+                    <p>Para ver todas as dicas, <a href="{{route('user.tips')}}">clique aqui</a></p>
                 @else
                     <p>Para ver todas as dicas, é necessário <a href="{{route('user.auth.login')}}">acessar</a> nosso site.</p>
                 @endif
