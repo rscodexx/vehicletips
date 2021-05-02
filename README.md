@@ -147,7 +147,13 @@ $ cd vehicletips
 # Após entrar no diretório do projeto instale o composer e suas dependências.
 $ composer install
 
-# Aguarde a instalação e pronto, seu servidor já está configurado para rodar o projeto.
+# Insira as tabelas no banco de dados.
+$ php artisan migrate
+
+# Preencha o banco de dados com dados fakes(opcional).
+$ php artisan db:seed
+
+# Pronto, seu servidor já está configurado para rodar o projeto.
 
 ```
 
