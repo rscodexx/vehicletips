@@ -84,8 +84,6 @@ class UserController extends Controller
     public function tipsCreateDo(Request $request)
     {
 
-        //dd($request->all());
-
         $validator = Validator::make($request->only('title', 'body'), [
             'title' => 'required|min:4|unique:tips',
             'body' => 'required|min:10'
@@ -139,5 +137,22 @@ class UserController extends Controller
 
         return redirect()->route('user.tips.my')->with('custom_alert','Dica cadastrada com sucesso.');
 
+    }
+
+    public function tipsDel(Request $request)
+    {
+
+        $tip = Tip::select('id')->where('id', $request->id)->where('user_id', Auth::id())->first();
+
+            if($tip) {
+                $msgDel['success'] = true;
+                $msgDel['message'] = "Dica deletada com sucesso.";
+                $tip->delete();
+                echo json_encode($msgDel);
+            } else {
+                $msgDel['success'] = false;
+                $msgDel['message'] = "Dica não encontrada.";
+                echo json_encode($msgDel);
+            }
     }
 }

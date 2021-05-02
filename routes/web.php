@@ -35,4 +35,5 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/tips/my', [UserController::class, 'myTips'])->name('user.tips.my');
     Route::get('/tips/create', [UserController::class, 'tipsCreate'])->name('user.tips.create');
     Route::post('/tips/createDo', [UserController::class, 'tipsCreateDo'])->name('user.tips.tipsCreateDo');
+    Route::post('/tips/del', [UserController::class, 'tipsDel'])->name('user.tips.tipsDel');
 });

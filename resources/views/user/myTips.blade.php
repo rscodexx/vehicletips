@@ -41,6 +41,10 @@
                 </tr>
                 </thead>
                 <tbody>
+
+                <div class="alert alert-success d-none success" role="alert"></div>
+                <div class="alert alert-danger d-none error" role="alert"></div>
+
                 @foreach($tips as $tip)
                     <tr>
                         <th scope="row">{{$tip->title}}</th>
@@ -50,12 +54,16 @@
                         <td>{{$tip->vehicle}}</td>
                         <td>{{$tip->version}}</td>
                         <td>
-                            <button class="btn btn-success mb-1" data-bs-toggle="modal" data-bs-target="#tips{{$tip->id}}"><i class="fas fa-eye"></i></button>
-                            <button class="btn btn-danger mb-1"><i class="fas fa-trash"></i></button>
+                            <form name="del">
+                                @csrf
+                                <input name="id" type="hidden" value="{{$tip->id}}">
+                                <button type="button" class="btn btn-success mb-1" data-bs-toggle="modal" data-bs-target="#tips{{$tip->id}}"><i class="fas fa-eye"></i></button>
+                                <button type="submit" class="btn btn-danger mb-1"><i class="fas fa-trash"></i></button>
+                            </form>
                         </td>
                     </tr>
 
-                    <!-- Modal Itens -->
+                    <!-- Show Tips -->
                     <div class="modal fade" id="tips{{$tip->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
@@ -81,7 +89,30 @@
 
         </div>
 
+        <script src="{{asset('assets/vendor/jquery/jquery.min.js')}}"></script>
+        <script src="{{asset('assets/vendor/jquery/jquery.form.min.js')}}"></script>
+        <script>
+            $(function(){
+                $('form[name="del"]').submit(function(event){
+                    event.preventDefault();
 
+                    var $tr = $(this).closest("tr");
 
-
+                    $.ajax({
+                        url: "{{route('user.tips.tipsDel')}}",
+                        type: "post",
+                        data: $(this).serialize(),
+                        dataType: 'json',
+                        success: function(response){
+                            if(response.success === true){
+                                $tr.fadeOut();
+                                $('.success').removeClass('d-none').html(response.message);
+                            } else {
+                                $('.error').removeClass('d-none').html(response.message);
+                            }
+                        }
+                    });
+                });
+            });
+        </script>
 @endsection
