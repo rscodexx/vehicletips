@@ -130,7 +130,7 @@
                                 </p>
                                 <h3>{{$tip->vehicle}}</h3>
                                 <h4>{{$tip->users->name}}</h4>
-                                <h4>em {{date('d:m:Y', strtotime($tip->updated_at))}} às {{date('H:m:i', strtotime($tip->updated_at))}}</h4>
+                                <h4>em {{date('d:m:Y', strtotime($tip->updated_at))}} às {{date('H:i:s', strtotime($tip->updated_at))}}</h4>
                             </div>
 
                         </div><!-- End testimonial item -->
