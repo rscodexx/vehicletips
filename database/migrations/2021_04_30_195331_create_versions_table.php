@@ -16,10 +16,7 @@ class CreateVersionsTable extends Migration
         Schema::create('versions', function (Blueprint $table) {
             $table->increments("id");
             $table->string("name");
-            $table->integer("vehicle_id")->unsigned();
-
-            $table->foreign("vehicle_id")
-                ->references("id")->on("versions")->onDelete("cascade");
+            $table->integer("vehicle_id");
         });
     }
 

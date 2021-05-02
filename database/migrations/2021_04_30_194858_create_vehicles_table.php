@@ -17,10 +17,7 @@ class CreateVehiclesTable extends Migration
             $table->increments("id");
             $table->string("type");
             $table->string("name");
-            $table->integer("brand_id")->unsigned();
-
-            $table->foreign("brand_id")
-                ->references("id")->on("vehicles")->onDelete("cascade");
+            $table->integer("brand_id");
 
         });
     }

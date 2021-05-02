@@ -11,9 +11,4 @@ class Brand extends Model
     use HasFactory;
 
     public $timestamps = false;
-
-    public function vehicles()
-    {
-        return $this->hasOne(Brand::class, 'vehicle_id', 'id');
-    }
 }

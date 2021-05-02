@@ -10,9 +10,4 @@ class Version extends Model
     use HasFactory;
 
     public $timestamps = false;
-
-    public function vehicle()
-    {
-        return $this->belongsTo(Vehicle::class);
-    }
 }
