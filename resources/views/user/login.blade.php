@@ -1,11 +1,11 @@
-@extends('layout.menu')
+@extends('layout.site')
 
 @section('title', 'Acessar sua Conta')
 @section('inner', 'Acessar')
 
 @extends('layout.inner')
 
-@section('content')
+@section('content.inner')
 
     <div class="row">
 

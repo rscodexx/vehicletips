@@ -1,11 +1,11 @@
-@extends('layout.menu')
+@extends('layout.site')
 
 @section('title', 'Minhas Dicas')
 @section('inner', 'Minhas Dicas')
 
 @extends('layout.inner')
 
-@section('content')
+@section('content.inner')
 
     <div class="row">
 
