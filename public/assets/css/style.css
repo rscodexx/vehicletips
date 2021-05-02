@@ -1420,6 +1420,32 @@ section {
     text-align: center;
 }
 
+.page-item.active .page-link {
+    background-color: #16df7e;
+    border-color: #16df7e;
+}
+
+.page-link {
+    color: #16df7e;
+}
+
+.btn-eye {
+    color: #fff;
+    background-color: #16df7e;
+    border-color: #16df7e;
+}
+.btn-eye:hover {
+    color: #fff;
+    background-color: #198754;
+    border-color: #198754;
+}
+.btn-eye:focus {
+    color: #fff;
+    background-color: #16df7e;
+    border-color: #16df7e;
+    box-shadow: #16df7e;
+}
+
 @media (max-width: 992px) {
   #footer .copyright, #footer .credits {
     float: none;

@@ -14,10 +14,15 @@ use Illuminate\Support\Facades\Validator;
 
 class TipController extends Controller
 {
-    public function tips()
+    public function tips(Request $request)
     {
 
-        $tips = Tip::select()->orderByDesc('updated_at')->with('users')->get();
+        $page = $request->has('page') ? $request->get('page') : 1;
+        $limit = $request->has('limit') ? $request->get('limit') : 10;
+
+        $tips = Tip::limit($limit)->offset(($page - 1) * $limit)->paginate();
+
+        //$tips = Tip::select()->orderByDesc('updated_at')->with('users')->get();
 
         return view('user.tips', [
             'tips' => $tips
@@ -32,7 +37,7 @@ class TipController extends Controller
 
             $search = $request->only('search');
 
-            $tips = Tip::select()->where('brand', $search)->orderByDesc('updated_at')->with('users')->get();
+            $tips = Tip::select()->where('brand', $search)->orderByDesc('updated_at')->with('users')->paginate();
 
         }
 
@@ -40,7 +45,7 @@ class TipController extends Controller
 
             $search = $request->only('search');
 
-            $tips = Tip::select()->where('vehicle', $search)->orderByDesc('updated_at')->with('users')->get();
+            $tips = Tip::select()->where('vehicle', $search)->orderByDesc('updated_at')->with('users')->paginate();
 
         }
 
@@ -48,7 +53,7 @@ class TipController extends Controller
 
             $search = $request->only('search');
 
-            $tips = Tip::select()->where('version', $search)->orderByDesc('updated_at')->with('users')->get();
+            $tips = Tip::select()->where('version', $search)->orderByDesc('updated_at')->with('users')->paginate();
 
         }
 

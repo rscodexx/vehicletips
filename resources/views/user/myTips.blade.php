@@ -57,7 +57,7 @@
                             <form name="del">
                                 @csrf
                                 <input name="id" type="hidden" value="{{$tip->id}}">
-                                <button type="button" class="btn btn-success mb-1" data-bs-toggle="modal" data-bs-target="#tips{{$tip->id}}"><i class="fas fa-eye"></i></button>
+                                <button type="button" class="btn btn-eye mb-1" data-bs-toggle="modal" data-bs-target="#tips{{$tip->id}}"><i class="fas fa-eye"></i></button>
                                 <button type="submit" class="btn btn-danger mb-1"><i class="fas fa-trash"></i></button>
                             </form>
                         </td>

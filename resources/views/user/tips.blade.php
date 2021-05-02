@@ -64,7 +64,7 @@
                             <td>{{$tip->brand}}</td>
                             <td>{{$tip->vehicle}}</td>
                             <td>{{$tip->version}}</td>
-                            <td><button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#tips{{$tip->id}}"><i class="fas fa-eye"></i></button></td>
+                            <td><button class="btn btn-eye" data-bs-toggle="modal" data-bs-target="#tips{{$tip->id}}"><i class="fas fa-eye"></i></button></td>
                         </tr>
 
                         <!-- Modal Itens -->
@@ -89,9 +89,12 @@
                     </tbody>
                 </table>
 
+
             </div>
 
         </div>
+
+        <div class="d-flex justify-content-end"> {{$tips->links("pagination::bootstrap-4")}} </div>
 
 
 
